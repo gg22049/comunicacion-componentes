@@ -3,8 +3,8 @@
     <div class="q-pa-md q-gutter-md">
       <h2 class="text-h4">Equipo de Fútbol</h2>
       <div class="row q-gutter-md">
-        <div v-for="jugador in jugadores" :key="jugador.id" class="col-12 col-md-5">
-          <JugadorIndividual :jugador="jugador" @update-player="actualizarJugador" />
+        <div v-for="jugador in jugadores" :key="jugador.id" class="col-6 col-md-5">
+          <JugadorIndividual />
         </div>
       </div>
     </div>
@@ -22,6 +22,7 @@ const jugadores = ref([
   { id: 3, nombre: 'Neymar', apellido: 'Jr', anioNacimiento: 1992 },
 ])
 
+/* Metodo que actualiza un jugador, recibe como parametro el jugador actualizado
 const actualizarJugador = (jugadorActualizado) => {
   const index = jugadores.value.findIndex((j) => j.id === jugadorActualizado.id)
   if (index !== -1) {
@@ -29,5 +30,5 @@ const actualizarJugador = (jugadorActualizado) => {
     jugadores.value[index] = jugadorActualizado
     console.log('Jugador actualizado en el padre:', jugadorActualizado)
   }
-}
+}*/
 </script>

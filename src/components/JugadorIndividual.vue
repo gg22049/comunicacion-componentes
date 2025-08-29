@@ -1,61 +1,38 @@
 <template>
   <q-card class="my-card">
     <q-card-section>
-      <div class="text-h6">{{ jugadorCopia.nombre }} {{ jugadorCopia.apellido }}</div>
-      <div class="text-subtitle2">ID: {{ jugadorCopia.id }}</div>
-      <div class="text-subtitle2">Edad: {{ edad }} años</div>
+      <div class="text-h6">nombre apellido</div>
+      <div class="text-subtitle2">ID: id</div>
+      <div class="text-subtitle2">Edad: edad años</div>
     </q-card-section>
 
     <q-separator />
 
     <q-card-actions align="right">
       <div class="q-pa-md">
-        <q-input
-          type="number"
-          filled
-          v-model="jugadorCopia.anioNacimiento"
-          label="Año de Nacimiento"
-        />
+        <q-input type="number" filled v-model="copiaAnho" label="Año de Nacimiento" />
       </div>
-      <q-btn color="primary" @click="guardarCambios">Guardar</q-btn>
+      <q-btn color="primary">Guardar</q-btn>
     </q-card-actions>
   </q-card>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref } from 'vue'
 
-// Definimos las props que el componente hijo espera
-const props = defineProps({
-  jugador: {
-    type: Object,
-    required: true,
-  },
-})
+// Definimos las props que el componente hijo espera,
+// el padre le debe pasar esta data
 
 // Definimos los eventos que el componente hijo puede emitir
-const emit = defineEmits(['update-player'])
+//el hijo lanzará un evento
 
-// Creamos una copia local reactiva de la prop para permitir la edición
-const jugadorCopia = ref({ ...props.jugador })
+// Creamos una copia local reactiva de la propiedad para permitir la edición
+const copiaAnho = ref(2000)
 
-// Usamos watch para re-sincronizar la copia si la prop cambia
-watch(
-  () => props.jugador,
-  (newVal) => {
-    jugadorCopia.value = { ...newVal }
-  },
-  { immediate: true },
-)
+// Debemos pensar en como sincronizar esto con la prop original
+//hay varias técnicas, podemos usar watch o tambien computed
 
 // Propiedad computada para calcular la edad basada en la props
-const edad = computed(() => {
-  const anioActual = new Date().getFullYear()
-  return anioActual - props.jugador.anioNacimiento
-})
 
 // Método para emitir el evento
-const guardarCambios = () => {
-  emit('update-player', jugadorCopia.value)
-}
 </script>

@@ -9,7 +9,6 @@
       </div>
 
       <!-- para efectos de depuracion se muestra el listado de la data de jugadores -->
-
       <ul>
         <div class="text-bold">Listado de Jugadores en Padre</div>
         <li v-for="jugador in jugadores" :key="jugador.id">

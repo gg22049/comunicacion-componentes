@@ -4,7 +4,11 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
   },
-
+  {
+    path: '/responsive',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{path: '', component: () => import('pages/ResponsiveDesign.vue')}],
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

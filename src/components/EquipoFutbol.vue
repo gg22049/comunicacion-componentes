@@ -4,7 +4,7 @@
       <h2 class="text-h4">Equipo de Fútbol</h2>
       <div class="row q-gutter-md">
         <div v-for="jugador in jugadores" :key="jugador.id" class="col-6 col-md-5">
-          <JugadorIndividual />
+          <JugadorIndividual v-bind="jugador" @guardar="actualizarJugador" ref="hijo"/>
         </div>
       </div>
 
@@ -39,4 +39,10 @@ const actualizarJugador = (jugadorActualizado) => {
     console.log('Jugador actualizado en el padre:', jugadorActualizado)
   }
 }*/
+const actualizarJugador = (jugadorActualizado) => {
+  const index = jugadores.value.findIndex((j) => j.id === jugadorActualizado.id)
+  if (index > -1) {
+    jugadores.value[index] = jugadorActualizado
+  }
+}
 </script>

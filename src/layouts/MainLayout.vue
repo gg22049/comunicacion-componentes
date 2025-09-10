@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> Comunicación entre componentes </q-toolbar-title>
+        <q-toolbar-title> Ejercicios FPI </q-toolbar-title>
 
       </q-toolbar>
     </q-header>
